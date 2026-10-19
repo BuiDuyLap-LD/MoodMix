@@ -1,5 +1,9 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { ArrowLeft, ArrowRight, Search, Globe, LogOut, User as UserIcon, Play, Pause, Music2, TrendingUp, Sparkles } from 'lucide-react';
+import { 
+  ArrowLeft, ArrowRight, Search, Globe, LogOut, User as UserIcon, 
+  Play, Pause, Music2, TrendingUp, Sparkles, Menu 
+} from 'lucide-react';
+import MoodMixLogo from '../MoodMixLogo';
 import { removeVietnameseTones } from '../../services/musicService';
 import SettingsDropdown from '../settings/SettingsDropdown';
 
@@ -15,6 +19,9 @@ export default function Header({
   user,
   onOpenLogin,
   onSignOut,
+  onToggleSidebar,
+  isSidebarOpen = false,
+  onNavigateHome,
 }) {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
@@ -73,7 +80,29 @@ export default function Header({
   return (
     <header className="zing-header">
       <div className="header-left-group">
-        {/* Navigation Arrows */}
+        {/* Mobile Navigation Menu Toggle */}
+        <button
+          type="button"
+          className="mobile-menu-toggle-btn"
+          onClick={onToggleSidebar}
+          aria-label={isSidebarOpen ? (lang === 'vi' ? 'Đóng menu' : 'Close menu') : (lang === 'vi' ? 'Mở menu' : 'Open menu')}
+          title={isSidebarOpen ? (lang === 'vi' ? 'Đóng menu' : 'Close menu') : (lang === 'vi' ? 'Mở menu' : 'Open menu')}
+        >
+          <Menu size={20} />
+        </button>
+
+        {/* Mobile Header Brand Logo */}
+        <div 
+          className="mobile-header-brand" 
+          onClick={() => onNavigateHome?.()}
+          role="button"
+          tabIndex={0}
+          title="MoodMix"
+        >
+          <MoodMixLogo size={28} showText={true} />
+        </div>
+
+        {/* Navigation Arrows (Desktop) */}
         <div className="nav-arrows-group">
           <button type="button" className="nav-arrow-btn" disabled title="Quay lại">
             <ArrowLeft size={18} />
@@ -91,8 +120,8 @@ export default function Header({
               type="text"
               placeholder={
                 lang === 'vi'
-                  ? 'Tìm kiếm bài hát, nghệ sĩ, tâm trạng...'
-                  : 'Search songs, artists, mood...'
+                  ? 'Tìm bài hát, nghệ sĩ...'
+                  : 'Search songs, artists...'
               }
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}

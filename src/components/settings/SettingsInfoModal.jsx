@@ -16,8 +16,6 @@ import {
   PlayCircle,
   Paintbrush,
   Globe,
-  Sliders,
-  Volume2,
 } from 'lucide-react';
 import { useSettings } from '../../context/SettingsContext';
 import { CONTACT_AND_ADS_CONFIG } from '../../constants/contactConfig';
@@ -564,24 +562,26 @@ export default function SettingsInfoModal({ isOpen, type, onClose }) {
               </div>
 
               <div className="ads-contact-box">
-                <p>{lang === 'vi' ? 'Liên hệ bộ phận Booking Quảng Cáo:' : 'Contact our Ads Partnership Desk:'}</p>
+                <p className="ads-contact-heading">{lang === 'vi' ? 'Liên hệ bộ phận Booking Quảng Cáo:' : 'Contact our Ads Partnership Desk:'}</p>
                 <div className="contact-row">
-                  <strong>{CONTACT_AND_ADS_CONFIG.ads.bookingEmail}</strong>
+                  <span className="contact-email-text">{CONTACT_AND_ADS_CONFIG.ads.bookingEmail}</span>
                   <div className="contact-btn-group">
                     <button
                       type="button"
                       className="copy-btn"
                       onClick={() => handleCopyEmail(CONTACT_AND_ADS_CONFIG.ads.bookingEmail)}
+                      title={lang === 'vi' ? 'Sao chép email' : 'Copy email'}
                     >
-                      {copied ? <Check size={14} className="text-green" /> : <Copy size={14} />}
+                      {copied ? <Check size={12} className="text-green" /> : <Copy size={12} />}
                       <span>{copied ? (lang === 'vi' ? 'Đã sao chép' : 'Copied') : (lang === 'vi' ? 'Sao chép' : 'Copy')}</span>
                     </button>
                     <a
                       href={`mailto:${CONTACT_AND_ADS_CONFIG.ads.bookingEmail}?subject=[MoodMix%20Booking]%20Lien%20he%20hop%20tac`}
                       className="copy-btn direct-action-btn"
+                      title={lang === 'vi' ? 'Soạn email liên hệ' : 'Compose email'}
                     >
-                      <Send size={13} />
-                      <span>{lang === 'vi' ? 'Soạn email' : 'Compose Email'}</span>
+                      <Send size={12} />
+                      <span>{lang === 'vi' ? 'Soạn mail' : 'Email'}</span>
                     </a>
                   </div>
                 </div>
@@ -629,21 +629,23 @@ export default function SettingsInfoModal({ isOpen, type, onClose }) {
                 <div className="contact-info-item">
                   <div className="contact-item-label">{lang === 'vi' ? 'Email hỗ trợ kỹ thuật:' : 'Support Email:'}</div>
                   <div className="contact-item-value">
-                    <span>{CONTACT_AND_ADS_CONFIG.contact.supportEmail}</span>
+                    <span className="contact-email-text">{CONTACT_AND_ADS_CONFIG.contact.supportEmail}</span>
                     <div className="contact-btn-group">
                       <button
                         type="button"
                         className="copy-btn"
                         onClick={() => handleCopyEmail(CONTACT_AND_ADS_CONFIG.contact.supportEmail)}
+                        title={lang === 'vi' ? 'Sao chép email' : 'Copy email'}
                       >
-                        {copied ? <Check size={14} className="text-green" /> : <Copy size={14} />}
+                        {copied ? <Check size={12} className="text-green" /> : <Copy size={12} />}
                         <span>{copied ? (lang === 'vi' ? 'Đã sao chép' : 'Copied') : (lang === 'vi' ? 'Sao chép' : 'Copy')}</span>
                       </button>
                       <a
                         href={`mailto:${CONTACT_AND_ADS_CONFIG.contact.supportEmail}?subject=[MoodMix%20Support]%20Yeu%20cau%20ho%20tro`}
                         className="copy-btn direct-action-btn"
+                        title={lang === 'vi' ? 'Gửi email hỗ trợ' : 'Send email'}
                       >
-                        <Send size={13} />
+                        <Send size={12} />
                         <span>{lang === 'vi' ? 'Gửi mail' : 'Email'}</span>
                       </a>
                     </div>

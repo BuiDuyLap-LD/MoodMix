@@ -88,6 +88,41 @@ html, body {
 }
 
 /* =====================================================================
+   MOODMIX BRAND LOGO
+===================================================================== */
+.moodmix-logo-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+}
+
+.moodmix-logo-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moodmix-logo-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.moodmix-brand-name {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #e9d5ff 40%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+}
+
+/* =====================================================================
    LEFT SIDEBAR (FROSTED GLASS EFFECT)
 ===================================================================== */
 
@@ -109,11 +144,18 @@ html, body {
 }
 
 .sidebar-brand-wrapper {
-  padding: 24px 24px 18px 24px;
+  padding: 22px 20px 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-brand-clickable {
   display: flex;
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
+  outline: none;
 }
 
 .sidebar-brand-sub {
@@ -121,7 +163,12 @@ html, body {
   font-weight: 800;
   letter-spacing: 0.12em;
   color: #c084fc;
-  padding-left: 4px;
+  padding-left: 2px;
+  white-space: nowrap;
+}
+
+.sidebar-mobile-close-btn {
+  display: none;
 }
 
 .sidebar-nav-group {
@@ -1221,50 +1268,69 @@ html, body {
 }
 
 .contact-item-value {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #ffffff;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.copy-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #cbd5e1;
-  padding: 5px 12px;
-  border-radius: 6px;
-  font-size: 11.5px;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: all 0.2s ease;
-  text-decoration: none;
-}
-
-.copy-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+.contact-email-text {
+  word-break: break-all;
+  font-family: inherit;
+  color: #f1f5f9;
+  letter-spacing: 0.01em;
 }
 
 .contact-btn-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 7px;
+  font-size: 11.5px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.copy-btn:active {
+  transform: scale(0.96);
 }
 
 .direct-action-btn {
-  background: rgba(168, 85, 247, 0.2);
-  border-color: rgba(168, 85, 247, 0.45);
-  color: #c084fc;
+  background: rgba(168, 85, 247, 0.18);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #d8b4fe;
 }
 
 .direct-action-btn:hover {
-  background: rgba(168, 85, 247, 0.4);
-  border-color: rgba(168, 85, 247, 0.8);
+  background: rgba(168, 85, 247, 0.32);
+  border-color: rgba(168, 85, 247, 0.7);
   color: #ffffff;
   box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
 }
@@ -1313,8 +1379,10 @@ html, body {
 .contact-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 14px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 13.5px;
   color: #ffffff;
 }
 
@@ -4040,22 +4108,164 @@ html, body {
   }
 }
 
+/* Mobile Header Controls */
+.mobile-menu-toggle-btn {
+  display: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-menu-toggle-btn:hover {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #c084fc;
+}
+
+.mobile-menu-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.mobile-header-brand {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  outline: none;
+}
+
 @media (max-width: 768px) {
-  .zing-sidebar {
-    width: 72px;
+  /* Show mobile controls in header */
+  .mobile-menu-toggle-btn {
+    display: flex;
   }
 
+  .mobile-header-brand {
+    display: flex;
+  }
+
+  .nav-arrows-group {
+    display: none;
+  }
+
+  .header-left-group {
+    gap: 10px;
+    max-width: none;
+  }
+
+  .header-right-group {
+    gap: 8px;
+  }
+
+  .zing-header {
+    padding: 0 12px;
+    height: 64px;
+  }
+
+  .search-box-input {
+    height: 36px;
+    font-size: 13px;
+    padding: 0 32px;
+  }
+
+  .search-box-icon {
+    left: 12px;
+    width: 15px;
+    height: 15px;
+  }
+
+  .header-login-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  /* SIDEBAR: TRANSFORM TO SMOOTH OFF-CANVAS DRAWER */
+  .zing-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 270px;
+    max-width: 82vw;
+    height: 100vh;
+    z-index: 2500;
+    background: rgba(18, 12, 30, 0.98);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-right: 1px solid rgba(168, 85, 247, 0.25);
+    box-shadow: 14px 0 50px rgba(0, 0, 0, 0.85);
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .zing-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  /* Dimmer Backdrop */
+  .sidebar-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 2490;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  /* Mobile Close Button in Drawer Header */
+  .sidebar-mobile-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .sidebar-mobile-close-btn:hover {
+    background: rgba(168, 85, 247, 0.25);
+    color: #ffffff;
+    border-color: rgba(168, 85, 247, 0.45);
+  }
+
+  /* In drawer mode, menu labels and badges are fully visible */
   .sidebar-brand-sub,
   .nav-item-label,
   .nav-item-badge,
   .sidebar-login-banner,
   .sidebar-create-playlist-btn span {
-    display: none;
+    display: block !important;
   }
 
   .sidebar-nav-item {
-    justify-content: center;
-    padding: 12px;
+    justify-content: flex-start !important;
+    padding: 12px 20px !important;
+  }
+
+  /* Main Viewport & Content */
+  .zing-main-viewport {
+    width: 100%;
+    max-width: 100vw;
   }
 
   .compact-songs-grid {
@@ -4070,12 +4280,41 @@ html, body {
     display: none;
   }
 
-  .zing-header {
-    padding: 0 16px;
+  .zing-content-scroll {
+    padding: 14px 14px 36px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* On very narrow phones, hide header brand text and keep glowing badge */
+  .mobile-header-brand .moodmix-brand-name {
+    display: none;
   }
 
-  .zing-content-scroll {
-    padding: 16px 16px 40px 16px;
+  .settings-modal-card {
+    padding: 20px 16px 16px 16px;
+    border-radius: 16px;
+  }
+
+  /* Responsive contact values & buttons in modals */
+  .contact-item-value,
+  .contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .contact-btn-group {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .contact-btn-group .copy-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 6px 10px;
+    font-size: 11px;
   }
 }
 

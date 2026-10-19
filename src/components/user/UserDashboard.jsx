@@ -25,6 +25,7 @@ export default function UserDashboard({ user, lang, setLang, onSignOut, onOpenLo
   const [activeNav, setActiveNav] = useState('explore');
   const [selectedMood, setSelectedMood] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   
   // Real data state from Supabase
   const [songs, setSongs] = useState([]);
@@ -141,6 +142,8 @@ export default function UserDashboard({ user, lang, setLang, onSignOut, onOpenLo
         onOpenLogin={onOpenLogin}
         onCreatePlaylist={handleOpenCreatePlaylist}
         lang={lang}
+        isMobileOpen={isMobileSidebarOpen}
+        onClose={() => setIsMobileSidebarOpen(false)}
       />
 
       {/* 2. Main Work Area (Header + Scrollable Content) */}
@@ -158,6 +161,12 @@ export default function UserDashboard({ user, lang, setLang, onSignOut, onOpenLo
           user={user}
           onOpenLogin={onOpenLogin}
           onSignOut={onSignOut}
+          onToggleSidebar={() => setIsMobileSidebarOpen((prev) => !prev)}
+          isSidebarOpen={isMobileSidebarOpen}
+          onNavigateHome={() => {
+            setActiveNav('explore');
+            setSelectedPlaylist(null);
+          }}
         />
 
         {/* Scrollable Viewport */}

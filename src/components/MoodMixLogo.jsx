@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function MoodMixLogo({ size = 44, showText = true }) {
+export default function MoodMixLogo({ size = 44, showText = true, className = '' }) {
   return (
-    <div className="moodmix-logo-container">
+    <div className={`moodmix-logo-container ${className}`}>
       <div 
         className="moodmix-logo-badge"
         style={{ width: `${size}px`, height: `${size}px` }}
