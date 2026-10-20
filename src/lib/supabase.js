@@ -11,7 +11,14 @@ export const isSupabaseConfigured = Boolean(
 );
 
 export const supabase = isSupabaseConfigured 
-  ? createClient(supabaseUrl, supabaseAnonKey) 
+  ? createClient(supabaseUrl, supabaseAnonKey, {
+      auth: {
+        flowType: 'pkce',
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: true
+      }
+    }) 
   : null;
 
 export const signInWithGoogle = async () => {
